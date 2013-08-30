@@ -53,6 +53,12 @@ This was written by Aaron Beckerman, who you can email at
 aaron@aaronbeckerman.com.
 
 
+== Acknowledgements
+
+Thanks to {Luiz Signorelli}[http://luizsignorelli.github.io/] for his
+suggestions.
+
+
 == Copyright
 
 This code is distributed under the MIT License (also known as the Expat
