@@ -21,7 +21,7 @@ module Classnamer
        Timestamp Raster String Hash Integer Cache Scrollbar Grid Jar Connection
        Database Graph Row Column Record Metadata Transaction Message Request
        Response Query Statement Result Upload Download User Directory Button
-       Device Search Lolcat Girlfriend Yakizakana Flugzeug Robot},
+       Device Search Lolcat Girlfriend Robot},
     %w{Sorter Allocator Tokenizer Writer Reader Randomizer Initializer Factory
        FactoryFactory Panel Frame Container Compressor Expander Counter
        Collector Collection Wrapper Accumulator Table Marshaller Demarshaller
