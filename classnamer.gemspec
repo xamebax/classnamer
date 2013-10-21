@@ -18,5 +18,4 @@ Gem::Specification.new do |s|
   s.test_files = ["test/classnamer_library_test.rb"]
   s.executables = ["classnamer"]
   s.require_paths = ["lib"]
-  s.add_development_dependency 'minitest', '5.0.7'
 end

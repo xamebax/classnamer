@@ -1,89 +1,73 @@
-require 'minitest/autorun'
 require 'classnamer'
 
-class ClassnamerLibraryTest < Minitest::Test
-  def test_version_constant_exists
-    assert_instance_of String, Classnamer::VERSION
-  end
+String == Classnamer::VERSION.class or fail
 
-  def test_part_candidate_matrix_has_three_elements
-    assert_equal 3, Classnamer::PART_CANDIDATE_MATRIX.length
-  end
+3 == Classnamer::PART_CANDIDATE_MATRIX.length or fail
 
-  def test_each_part_candidate_starts_with_an_uppercase_letter
-    assert Classnamer::PART_CANDIDATE_MATRIX.flatten(1).
-      all? { |part_candidate| part_candidate =~ /\A[A-Z]/ }
-  end
+Classnamer::PART_CANDIDATE_MATRIX.flatten(1).
+  all? { |part_candidate| part_candidate =~ /\A[A-Z]/ } or fail
 
-  def test_classnamer_responds_to_generate
-    assert_respond_to Classnamer, :generate
-  end
+Classnamer.respond_to?(:generate) or fail
 
-  def test_classnamer_generates_a_string
-    assert_kind_of String, Classnamer.generate
-  end
+String == Classnamer.generate.class or fail
 
-  def test_generate_returns_concatenation_of_part_candidates_as_strings
-    assert_equal '42ObjecttrueSymbolFoo',
-      Classnamer.generate([[42], [Object], [nil], [true], [:Symbol], ['Foo']])
-  end
+'42ObjecttrueSymbolFoo' == Classnamer.generate(
+  [[42], [Object], [nil], [true], [:Symbol], ['Foo']]) or fail
 
-  def test_generate_calls_prng_with_length_of_each_element_of_part_candidate_matrix
-    matrix = [%w{A B C}, [], %w{A B}, %w{A}]
-    prng_args = []
-    prng = lambda { |n|
-      prng_args << n
-      0
-    }
-    Classnamer.generate matrix, prng
-    assert_equal [3, 0, 2, 1], prng_args
-  end
+lambda do
+  matrix = [%w{A B C}, [], %w{A B}, %w{A}]
+  prng_args = []
+  prng = lambda { |n|
+    prng_args << n
+    0
+  }
+  Classnamer.generate matrix, prng
+  [3, 0, 2, 1] == prng_args or fail
+end.call
 
-  def test_generate_uses_prng_for_indices
-    matrix = [%w{Foo0 Foo1 Foo2}, %w{Bar0 Bar1 Bar2}, %w{Baz0 Baz1 Baz2}]
-    indices = [0, 2, 1]
-    assert_equal 'Foo0Bar2Baz1',
-      Classnamer.generate(matrix, lambda { |_| indices.shift })
-  end
+lambda do
+  matrix = [%w{Foo0 Foo1 Foo2}, %w{Bar0 Bar1 Bar2}, %w{Baz0 Baz1 Baz2}]
+  indices = [0, 2, 1]
+  'Foo0Bar2Baz1' == Classnamer.generate(matrix, lambda { |_| indices.shift }) \
+    or fail
+end.call
 
-  def test_generate_returns_a_single_part_name
-    assert_equal 'Foo', Classnamer.generate([['Foo']])
-  end
+'Foo' == Classnamer.generate([['Foo']]) or fail
 
-  def test_generate_returns_empty_string_for_empty_part_candidate_matrix
-    assert_equal '', Classnamer.generate([])
-  end
+'' == Classnamer.generate([]) or fail
 
-  def test_generate_returns_empty_string_for_empty_part_candidate_arrays
-    assert_equal '', Classnamer.generate([[], [], []])
-  end
+'' == Classnamer.generate([[], [], []]) or fail
 
-  def test_generate_raises_an_exception_when_given_an_inappropriate_matrix
-    assert_raises(NoMethodError) { Classnamer.generate nil }
-  end
-
-  def test_generate_raises_an_exception_when_given_an_inappropriate_prng
-    assert_raises(NoMethodError) {
-      Classnamer.generate Classnamer::PART_CANDIDATE_MATRIX, nil
-    }
-  end
-
-  def test_generate_raises_an_exception_when_argument_contains_an_inappropriate_element
-    assert_raises(NoMethodError) { Classnamer.generate [['Foo'], nil] }
-  end
-
-  def test_initialize_generator_instance
-    assert_kind_of Classnamer::Generator, Classnamer::Generator.new
-  end
-
-  def test_generator_responds_to_generate
-    assert_respond_to Classnamer::Generator.new, :generate
-  end
-
-  def test_generator_generates_based_on_initialization_parameters
-    matrix = [%w{Foo0 Foo1 Foo2}, %w{Bar0 Bar1 Bar2}, %w{Baz0 Baz1 Baz2}]
-    indices = [0, 2, 1]
-    generator = Classnamer::Generator.new(matrix, lambda { |_| indices.shift })
-    assert_equal 'Foo0Bar2Baz1', generator.generate
-  end
+begin
+  Classnamer.generate nil
+rescue NoMethodError
+else
+  fail
 end
+
+begin
+  Classnamer.generate Classnamer::PART_CANDIDATE_MATRIX, nil
+rescue NoMethodError
+else
+  fail
+end
+
+begin
+  Classnamer.generate [['Foo'], nil]
+rescue NoMethodError
+else
+  fail
+end
+
+Classnamer::Generator == Classnamer::Generator.new.class or fail
+
+Classnamer::Generator.new.respond_to?(:generate) or fail
+
+lambda do
+  matrix = [%w{Foo0 Foo1 Foo2}, %w{Bar0 Bar1 Bar2}, %w{Baz0 Baz1 Baz2}]
+  indices = [0, 2, 1]
+  generator = Classnamer::Generator.new(matrix, lambda { |_| indices.shift })
+  'Foo0Bar2Baz1' == generator.generate or fail
+end.call
+
+puts 'Test finished.'
