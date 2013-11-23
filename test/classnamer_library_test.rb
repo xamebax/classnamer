@@ -5,7 +5,7 @@ String == Classnamer::VERSION.class or fail
 3 == Classnamer::PART_CANDIDATE_MATRIX.length or fail
 
 Classnamer::PART_CANDIDATE_MATRIX.flatten(1).
-  all? { |part_candidate| part_candidate =~ /\A[A-Z]/ } or fail
+  all? { |part_candidate| /\A[A-Z]/ =~ part_candidate } or fail
 
 Classnamer.respond_to?(:generate) or fail
 
