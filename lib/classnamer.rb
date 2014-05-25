@@ -11,30 +11,28 @@ module Classnamer
   # The default part candidate matrix, used by generate.
   PART_CANDIDATE_MATRIX = [
     %w{Threadsafe Optimized Stable Automatic Abstract Serializable Writable
-       Readable Executable Nonblocking Scriptable Smart Basic Checked
-       ErrorCorrecting Simple Secure Cryptographic Flexible Configurable
-       Internal Cloneable Legacy Recursive Multiple Threaded Virtual Singleton
-       Stateless Stateful Localized Prioritized Generic Dynamic Shared Runnable
-       Modal},
+       Readable Blocking Nonblocking Scriptable Smart Basic Remote Simple
+       Secure Cryptographic Flexible Configurable Internal Cloneable Legacy
+       Recursive Multiple Threaded Virtual Singleton Stateless Stateful
+       Localized Prioritized Generic Dynamic Shared Modal Fast Temporary},
     %w{Byte Task Object Resource Mutex Memory List Node File Lock Pixel
        Character Command Client Server Socket Thread Notification Keystroke
-       Timestamp Raster String Hash Integer Cache Scrollbar Grid Jar Connection
-       Database Graph Row Column Record Metadata Transaction Message Request
-       Response Query Statement Result Upload Download User Directory Button
-       Device Search Lolcat Girlfriend Robot},
+       Timestamp Raster String Hash Integer Cache Scrollbar Grid Package
+       Connection Database Graph Row Column Record Metadata Transaction Message
+       Request Response Query Statement Result Upload Download User Directory
+       Button Device Search Lolcat Girlfriend Robot},
     %w{Sorter Allocator Tokenizer Writer Reader Randomizer Initializer Factory
-       FactoryFactory Panel Frame Container Compressor Expander Counter
-       Collector Collection Wrapper Accumulator Table Marshaller Demarshaller
-       Extractor Parser Scanner Interpreter Validator Window Dialog Stream
-       Listener Event Exception Vector Lexer Analyzer Iterator Set Tree
-       Concatenator Monitor Tester Buffer Selector Visitor Adapter Helper
-       Annotation Permission Info Action Channel Filter Manager Mediator
-       Operation Context Queue Stack View Engine Publisher Subscriber Delegator
-       State Processor Handler Generator Dispatcher Bundle Builder Logger
-       Iterator Observer Encoder Decoder Importer Exporter Util Policy
-       Preference Formatter Sequence Comparator Definition Timer Servlet
-       Controller Loader Converter Constraint Module Migrator Descriptor
-       Process}
+       Panel Frame Container Compressor Expander Counter Collector Collection
+       Wrapper Accumulator Table Marshaller Demarshaller Extractor Parser
+       Scanner Interpreter Validator Window Dialog Stream Listener Event
+       Exception Vector Lexer Analyzer Iterator Set Tree Concatenator Monitor
+       Tester Buffer Selector Visitor Adapter Helper Annotation Permission
+       Info Action Channel Filter Manager Mediator Operation Context Queue
+       Stack View Engine Publisher Subscriber Delegator State Processor Handler
+       Generator Dispatcher Bundle Builder Logger Iterator Observer Encoder
+       Decoder Importer Exporter Util Policy Preference Formatter Sequence
+       Comparator Definition Timer Classifier Controller Loader Converter
+       Constraint Module Migrator Descriptor Process}
   ]
 
   # The default index generator, used by generate.
