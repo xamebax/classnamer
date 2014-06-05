@@ -20,7 +20,7 @@ module Classnamer
        Timestamp Raster String Hash Integer Cache Scrollbar Grid Package
        Connection Database Graph Row Column Record Metadata Transaction Message
        Request Response Query Statement Result Upload Download User Directory
-       Button Device Search Lolcat Girlfriend Robot},
+       Button Device Search Lolcat Robot},
     %w{Sorter Allocator Tokenizer Writer Reader Randomizer Initializer Factory
        Panel Frame Container Compressor Expander Counter Collector Collection
        Wrapper Accumulator Table Marshaller Demarshaller Extractor Parser
